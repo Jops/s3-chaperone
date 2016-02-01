@@ -1,26 +1,43 @@
 {
   "name": "s3-chaperone",
-  "version": "1.0.0",
+  "author": "Jops",
+  "version": "1.1.0",
+  "license": "ISC",
   "description": "An AWS S3 adapter for signed-urls.",
+  "homepage": "https://github.com/Jops/s3-chaperone#readme",
   "main": "index.js",
-  "scripts": {
-    "test": "test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Jops/s3-chaperone.git"
-  },
   "keywords": [
     "s3",
     "aws"
   ],
-  "author": "Jops",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jops/s3-chaperone.git"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "lintfix": "eslint . --fix",
+    "test": "npm run lint && npm run unit-tests",
+    "unit-tests": "mocha test",
+    "watch": "nodemon -q --exec \"node index.js\"",
+    "watch-unit-tests": "mocha test -w"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "chai-as-promised": "^5.2.0",
+    "eslint": "^1.10.2",
+    "eslint-config-standard": "^4.4.0",
+    "mocha": "^2.3.4",
+    "mockery": "^1.4.0",
+    "nodemon": "^1.8.1",
+    "sinon": "^1.17.3",
+    "sinon-chai": "^2.8.0"
+  },
+  "dependencies": {
+    "request": "^2.69.0",
+    "express": "^4.13.4"
+  },
   "bugs": {
     "url": "https://github.com/Jops/s3-chaperone/issues"
-  },
-  "homepage": "https://github.com/Jops/s3-chaperone#readme",
-  "dependencies": {
-    "express": "^4.13.4"
   }
 }

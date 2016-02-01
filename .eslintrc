@@ -1,0 +1,31 @@
+{
+    rules: {
+        indent: [
+            2,
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ],
+        quotes: [
+            2,
+            "single"
+        ],
+        linebreak-style: [
+            2,
+            "unix"
+        ],
+        semi: [
+            2,
+            "always"
+        ],
+        "no-console": 0,
+        "curly": 0
+    },
+    env: {
+        mocha: true,
+        browser: true,
+        node: true
+    },
+    extends: "eslint:recommended"
+}
