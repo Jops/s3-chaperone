@@ -1,7 +1,7 @@
 {
   "name": "s3-chaperone",
-  "author": "Jops",
   "version": "1.1.0",
+  "author": "Jops",
   "license": "ISC",
   "description": "An AWS S3 adapter for signed-urls.",
   "homepage": "https://github.com/Jops/s3-chaperone#readme",
@@ -30,12 +30,16 @@
     "mocha": "^2.3.4",
     "mockery": "^1.4.0",
     "nodemon": "^1.8.1",
+    "rewire": "^2.5.1",
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0"
   },
   "dependencies": {
-    "request": "^2.69.0",
-    "express": "^4.13.4"
+    "aws-sdk": "^2.2.33",
+    "config": "^1.19.0",
+    "eslint-plugin-standard": "^1.3.1",
+    "express": "^4.13.4",
+    "request": "^2.69.0"
   },
   "bugs": {
     "url": "https://github.com/Jops/s3-chaperone/issues"
