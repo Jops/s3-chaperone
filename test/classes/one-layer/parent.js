@@ -17,35 +17,35 @@
 */
 
 // private but visible to module
-var aSemiPrivateVar = 'semi private var';
+var aSemiPrivateVar = 'parent semi private var';
 
 (function() {
 
     // private to this Closure
-    var aPrivateVar = 'private var';
+    var aPrivateVar = 'parent private var';
 
-    module.exports = require('../../lib/_class').create(
+    module.exports = require('../../../lib/_class').create(
         {
-            aPublicVar: 'original',
+            aPublicVar: 'parent original',
+            aParentVar: 'parent public var',
+            aParentVarToBeOverriden: 'parent public var not overridden',
 
             constructor: function( value )
             {
                 this.aPublicVar = value;
             },
 
-            publicMessage: function()
-            {
-                return this.aPublicVar;
-            },
-
-            semiPrivateMessage: function()
-            {
-                return aSemiPrivateVar;
-            },
-
             privateMessage: function()
             {
                 return aPrivateVar;
+            },
+
+            inheritedMessage: function()
+            {
+                return [
+                    this.aParentVar,
+                    this.aParentVarToBeOverriden
+                ];
             }
 
         }

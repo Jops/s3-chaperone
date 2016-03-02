@@ -17,38 +17,26 @@
 */
 
 // private but visible to module
-var aSemiPrivateVar = 'semi private var';
+var aSemiPrivateVar = 'parent semi private var';
 
 (function() {
 
-    // private to this Closure
-    var aPrivateVar = 'private var';
+    var BaseA = require('./baseA');
+    var BaseB = require('./baseB');
 
-    module.exports = require('../../lib/_class').create(
+    // private to this Closure
+    var aPrivateVar = 'parent private var';
+
+    module.exports = require('../../../lib/_class').create(
         {
-            aPublicVar: 'original',
 
             constructor: function( value )
             {
                 this.aPublicVar = value;
-            },
-
-            publicMessage: function()
-            {
-                return this.aPublicVar;
-            },
-
-            semiPrivateMessage: function()
-            {
-                return aSemiPrivateVar;
-            },
-
-            privateMessage: function()
-            {
-                return aPrivateVar;
             }
 
-        }
+        },
+        BaseA, BaseB
     );
 
 }());

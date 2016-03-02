@@ -16,39 +16,20 @@
 * 3. This notice may not be removed or altered from any source distribution.
 */
 
-// private but visible to module
-var aSemiPrivateVar = 'semi private var';
-
 (function() {
 
-    // private to this Closure
-    var aPrivateVar = 'private var';
+    var Parent = require('./parent');
 
-    module.exports = require('../../lib/_class').create(
+    module.exports = require('../../../lib/_class').create(
         {
-            aPublicVar: 'original',
 
             constructor: function( value )
             {
-                this.aPublicVar = value;
-            },
-
-            publicMessage: function()
-            {
-                return this.aPublicVar;
-            },
-
-            semiPrivateMessage: function()
-            {
-                return aSemiPrivateVar;
-            },
-
-            privateMessage: function()
-            {
-                return aPrivateVar;
+                Parent.apply( this, arguments );
             }
 
-        }
+        },
+        Parent
     );
 
 }());
