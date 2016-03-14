@@ -17,7 +17,7 @@ var httpsClientOptions = {
 
 describe( 'App', function() {
 
-    before(function() {
+    before( function() {
         // start server
         require('..');
         // disable request skipping self signed server certs for development only
@@ -31,7 +31,8 @@ describe( 'App', function() {
                     url: siteURL_HTTP + '/status',
                     proxy: ''
                 },
-                function( err, res ) {
+                function( err, res )
+                {
                     expect( err ).to.equal( null );
                     expect( res.statusCode ).to.equal( 200 );
                     expect( res.body ).to.equal( 'OK' );
@@ -46,7 +47,8 @@ describe( 'App', function() {
                     url: siteURL_HTTP + '/',
                     proxy: ''
                 },
-                function( err, res ) {
+                function( err, res )
+                {
                     expect( err ).to.equal( null );
                     expect( res.statusCode ).to.equal( 200 );
                     expect( res.body ).to.equal( 'OK' );
@@ -55,14 +57,15 @@ describe( 'App', function() {
             );
         });
 
-        it( 'should deny unauthorised access to /api/access', function( done ) {
+        it( 'should deny unauthorised access to /api/s3', function( done ) {
             request.get(
                 {
-                    url: siteURL_HTTPS + '/api/access',
+                    url: siteURL_HTTPS + '/api/s3',
                     proxy: '',
                     ca: fs.readFileSync(path.resolve(__dirname, '../ssl/ca.crt'))
                 },
-                function( err, res ) {
+                function( err, res )
+                {
                     expect( res.statusCode ).to.equal( 401 );
                     expect( res.body ).to.equal( 'Certification Required' );
                     done();
@@ -70,14 +73,15 @@ describe( 'App', function() {
             );
         });
 
-        it( 'should allow authorised access to /api/access', function( done ) {
-            httpsClientOptions.url += '/api/access';
+        it( 'should allow authorised access to /api/s3', function( done ) {
+            httpsClientOptions.url += '/api/s3';
             request.get(
                 httpsClientOptions,
-                function( err, res ) {
+                function( err, res )
+                {
                     expect( res.statusCode ).to.equal( 200 );
                     expect( res.headers['content-type'] ).to.contain( 'application/json' );
-                    expect( JSON.parse( res.body ).message ).to.equal( 'Secure endpoint?' );
+                    expect( JSON.parse( res.body ).name ).to.equal( 's3-chaperone API' );
                     done();
                 }
             );

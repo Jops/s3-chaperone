@@ -1,0 +1,19 @@
+{
+    "routes": {
+        "index": "/",
+        "status": "/status",
+        "api": "/api",
+        "s3": "/api/s3"
+    },
+    "s3": {
+        "put": {
+            "ttl": 300
+        },
+        "get": {
+            "ttl": 60
+        },
+        "bucket": {
+            "name": "ext-dev"
+        }
+    }
+}
